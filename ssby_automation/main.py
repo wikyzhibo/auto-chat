@@ -466,6 +466,48 @@ def is_partner_left(page):
     except: pass
     return False
 
+INPUT_SELECTOR = "textarea, input.uni-input-input, .input-box"
+
+def send_message(page, text):
+    """
+    发送一条消息。先清空输入框，再输入文字，最后用 Enter 发送。
+    """
+    try:
+        input_box = page.locator(INPUT_SELECTOR).first
+        if not input_box.is_visible():
+            print("[Error] Input box not visible.")
+            return False
+        
+        input_box.click()
+        time.sleep(0.3)
+        
+        # 先清空残留文字
+        input_box.fill("")
+        time.sleep(0.2)
+        
+        # 输入新文字
+        input_box.fill(text)
+        input_box.dispatch_event("input")
+        time.sleep(0.3)
+        
+        # 用 Enter 键发送（最可靠）
+        input_box.press("Enter")
+        time.sleep(0.5)
+        
+        print(f"[Auto-Self]: {text}")
+        return True
+    except Exception as e:
+        print(f"[Error] Send failed: {e}")
+        return False
+
+def clear_input_box(page):
+    """清空输入框中的残留文字。"""
+    try:
+        input_box = page.locator(INPUT_SELECTOR).first
+        if input_box.is_visible():
+            input_box.fill("")
+    except: pass
+
 def chat_session(page):
     """
     管理一次聊天会话。
@@ -473,9 +515,12 @@ def chat_session(page):
     """
     print("\n[Chat] Session started.")
     
+    # 先清空输入框（防止上次残留）
+    clear_input_box(page)
+    
     conversation_script = [
         "你好呀，还在吗？",
-        "感觉很神奇哈哈",
+        "我是通过Python脚本自动聊天的，感觉很神奇哈哈",
         "你那边能看到我发的消息吗？",
         "今天过得怎么样？",
         "这个软件挺有意思的",
@@ -495,28 +540,9 @@ def chat_session(page):
                    "绿色聊天", "对方正在输入", "对方正在输入...", "发送中", "点击重试"}
 
     # 发送第一条消息
-    try:
-        input_box = page.locator("textarea, input.uni-input-input, .input-box").first
-        if input_box.is_visible():
-            input_box.click()
-            page.keyboard.type(conversation_script[0])
-            input_box.dispatch_event("input")
-            time.sleep(0.5)
-            
-            send_btn = page.locator("text=发送").first
-            if not send_btn.is_visible():
-                 send_btn = page.locator(".send-btn, .icon-send").first
-            
-            if send_btn.is_visible():
-                send_btn.click()
-            else:
-                input_box.press("Enter")
-                
-            print(f"[Auto-Self]: {conversation_script[0]}")
-            script_index += 1
-            last_action_time = time.time()
-    except Exception as e:
-        print(f"[Error] First msg failed: {e}")
+    if send_message(page, conversation_script[0]):
+        script_index += 1
+        last_action_time = time.time()
 
     last_msg_count = 0
     try:
@@ -530,18 +556,20 @@ def chat_session(page):
         # 超时检测
         if time.time() - last_action_time > TIMEOUT_SECONDS:
             print(f"[Chat] Timeout! No reply for {TIMEOUT_SECONDS}s.")
+            clear_input_box(page)
             return "timeout"
         
-        # 对方离开检测：页面出现"离开聊天"按钮
+        # 对方离开检测
         if is_partner_left(page):
             print("[Chat] Partner left! Clicking '离开聊天'...")
+            clear_input_box(page)
             try:
                 page.locator("text=离开聊天").last.click()
                 time.sleep(2)
             except: pass
             return "partner_left"
         
-        # 重新匹配页检测（可能对方离开后直接跳到这里）
+        # 重新匹配页检测
         if is_on_rematch_page(page):
             print("[Chat] Rematch page detected mid-chat.")
             return "partner_left"
@@ -565,24 +593,7 @@ def chat_session(page):
                     print("[Chat] Opponent replied. Replying...")
                     time.sleep(1)
                     
-                    next_text = conversation_script[script_index]
-                    input_box = page.locator("textarea, input.uni-input-input, .input-box").first
-                    if input_box.is_visible():
-                        input_box.click()
-                        page.keyboard.type(next_text)
-                        input_box.dispatch_event("input")
-                        time.sleep(0.5)
-                        
-                        send_btn = page.locator("text=发送").first
-                        if not send_btn.is_visible():
-                            send_btn = page.locator(".send-btn, .icon-send").first
-                        
-                        if send_btn.is_visible():
-                            send_btn.click()
-                        else:
-                            input_box.press("Enter")
-                        
-                        print(f"[Auto-Self]: {next_text}")
+                    if send_message(page, conversation_script[script_index]):
                         script_index += 1
                         last_action_time = time.time()
                 
@@ -594,6 +605,7 @@ def chat_session(page):
         time.sleep(1)
     
     print("[Chat] Script finished for this session.")
+    clear_input_box(page)
     return "finished"
 
 def run_automation_loop(page):
