@@ -1,0 +1,69 @@
+{
+  "localStorage": {
+    "track_id": "track_ib14ust9f51770820429323",
+    "user_login_event_triggered": "true",
+    "privacy_policy_agreed_v1": "{\"type\":\"boolean\",\"data\":true}",
+    "analytics_last_timestamp": "{\"type\":\"number\",\"data\":1770820454857}",
+    "age": "{\"type\":\"number\",\"data\":2}",
+    "bottle_websocket_server_url": "wss://amd-server-01.unclenoway.net:48083",
+    "AlicomVoipUniqueId": "42dc9b0e85da143969145cc76f7daa95",
+    "isShowLocation": "{\"type\":\"boolean\",\"data\":true}",
+    "old_user_report_last_date": "2026-02-11T14:34:20.128Z",
+    "userPwdEncrypted": "28919103f6d28c82425f17bc153e3ca7cdc8a04a03c543afffbcc07f5719a43a",
+    "bottle_user_has_vip": "false",
+    "gender": "m",
+    "bottle_chat_start_time_177082047745313": "1770820477584",
+    "userId": "wUGAbC3hIkKdwoN5",
+    "bottle_last_chat_info": "{\"chatId\":\"177082047745313\",\"partnerInfo\":{\"gender\":\"女生\",\"age\":\"2\",\"province\":\"\",\"labels\":[{\"name\":\"二次元\",\"chosen\":true}],\"isVip\":false,\"isSVip\":false,\"isShowVipLabel\":false,\"partnerIdEncrypted\":\"QcKCwrvDj8K/w5DCqXjCrMK7w4fDocOiw53DncKkew==\",\"strGender\":\"女生\",\"strAge\":\"2\",\"strProvince\":\"\",\"isShowLocation\":false,\"wordFilter\":3},\"partnerIdEncrypted\":\"QcKCwrvDj8K/w5DCqXjCrMK7w4fDocOiw53DncKkew==\",\"timestamp\":1770820477584}",
+    "new_user_message_count": "{\"type\":\"number\",\"data\":0}",
+    "bottle_session_server_url": "wss://amd-server-01.unclenoway.net:48083",
+    "chatStartTime": "1770820177589",
+    "bottle_user_chat_count": "4",
+    "user_province": "广西壮族自治区",
+    "bottle_chat_state": "{\"timestamp\":1770820477584,\"currentAccount\":\"8618077598368\",\"chatState\":\"PAIRED\",\"chatId\":\"177082047745313\",\"partnerInfo\":{\"gender\":\"女生\",\"age\":\"2\",\"province\":\"\",\"labels\":[],\"isVip\":false,\"isSVip\":false,\"isShowVipLabel\":false,\"partnerIdEncrypted\":\"QcKCwrvDj8K/w5DCqXjCrMK7w4fDocOiw53DncKkew==\"}}",
+    "bottle_chat_177082047745313": "{\"chatId\":\"177082047745313\",\"timestamp\":1770820484469,\"messages\":[{\"id\":\"m1770820479069538\",\"content\":\"11\",\"time\":\"22:34:39\",\"type\":\"text\",\"user\":\"self\",\"status\":\"read\",\"isRead\":true,\"isDelivered\":true,\"tmpId\":\"tmp_1770820479069647\",\"_tmpId\":\"tmp_1770820479069647\"},{\"id\":\"m1770820483754754\",\"content\":\"什么\",\"time\":\"22:34:44\",\"type\":\"text\",\"user\":\"other\",\"isPulp\":false,\"options\":{},\"isTopicCard\":false,\"reviewStatus\":\"passed\"}],\"partnerInfo\":{\"gender\":\"女生\",\"age\":\"2\",\"province\":\"\",\"labels\":[{\"name\":\"二次元\",\"chosen\":true}],\"isVip\":false,\"isSVip\":false,\"isShowVipLabel\":false,\"partnerIdEncrypted\":\"QcKCwrvDj8K/w5DCqXjCrMK7w4fDocOiw53DncKkew==\",\"strGender\":\"女生\",\"strAge\":\"2\",\"strProvince\":\"\",\"isShowLocation\":false,\"wordFilter\":3},\"partnerIdEncrypted\":\"QcKCwrvDj8K/w5DCqXjCrMK7w4fDocOiw53DncKkew==\"}",
+    "bottle_system_granted_vip": "false",
+    "bottle_user_has_svip": "false",
+    "bottle_user_vip_code": "system_granted",
+    "web_device_id": "web_d1s3ecij6q",
+    "bottle_system_granted_person": "新用户赠送",
+    "bottle_user_self_stay": "true",
+    "__DC_STAT_UUID": "17708204292999554189",
+    "phoneNumber": "8618077598368",
+    "bottle_system_granted_svip": "false",
+    "bottle_user_is_restricted": "false"
+  },
+  "sessionStorage": {},
+  "cookies": [
+    {
+      "name": "BAIDUID_BFESS",
+      "value": "50489BF5553F4FC2290AEC1E64255F76:FG=1",
+      "domain": ".baidu.com",
+      "path": "/",
+      "expires": 1802356428.993725,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "AGL_USER_ID",
+      "value": "48bfdc8a-c956-48ee-8c6c-08afe18e1423",
+      "domain": ".app.ssby.cc",
+      "path": "/",
+      "expires": 1805380429.000508,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__uni__uid",
+      "value": "rBEQRWmMk0+WxLT5A26bAg==",
+      "domain": ".dcloud.net.cn",
+      "path": "/",
+      "expires": 1805380431.938647,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    }
+  ]
+}
